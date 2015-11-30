@@ -1,1 +1,0 @@
-ciao speriamo che funziona
