@@ -1,4 +1,4 @@
-package grafic;
+
 
 
 import java.awt.Graphics;
@@ -11,6 +11,8 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 public class GraficTester {
 
 	public static void main(String[] args) {
@@ -22,7 +24,10 @@ public class GraficTester {
 		frame.setTitle("Circle");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		double rad=0;
+		SliderFrame colorFrame= new SliderFrame();
+		colorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
 		
 		class CircleComponent extends JComponent {
 			private double radius;
@@ -37,8 +42,11 @@ public class GraficTester {
 				Graphics2D g2 = (Graphics2D) g;
 				// Construct a rectangle and draw it
 				Ellipse2D.Double box = new Ellipse2D.Double(5,5,radius*2,radius*2);
+					g2.setColor(colorFrame.getColor());
+					g2.fill(box);
 					g2.draw(box);
 			}
+			
 			public void changeRad(Double d){
 				radius=d;
 			}
@@ -98,7 +106,7 @@ public class GraficTester {
 			}
 		
 		}
-
+		
 		RadMouseListener clickrad= new RadMouseListener();
 		frame.add(clickrad.circle);
 		send.addMouseListener(clickrad);
@@ -108,6 +116,7 @@ public class GraficTester {
 		inputframe.add(inputpane);
 		inputframe.setVisible(true);
 		frame.setVisible(true);
+		colorFrame.setVisible(true);
 		
 		
 		
