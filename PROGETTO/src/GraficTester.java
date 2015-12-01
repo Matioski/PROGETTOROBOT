@@ -1,4 +1,3 @@
-package grafic;
 
 
 import java.awt.Graphics;
