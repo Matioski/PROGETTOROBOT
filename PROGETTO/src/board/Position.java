@@ -12,6 +12,7 @@ public class Position {
 	}
 	public int getY(){
 		return y;
+		
 	}
 	private int x;
 	private int y;
