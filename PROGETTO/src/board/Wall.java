@@ -31,17 +31,17 @@ public class Wall extends Positionable {
 			// Recover Graphics2D
 			Graphics2D g2 = (Graphics2D) g;
 			// Construct a rectangle and draw it
-			
-				 BufferedImage immagine = null;
+			BufferedImage immagine = null;
+			 String projectPath = System.getProperty("user.dir");
 				try {
-					immagine = ImageIO.read(new File("C:\\Users\\Mattia\\Desktop\\images.jpg"));
+					immagine = ImageIO.read(new File(projectPath + "\\bin\\board\\image.jpg"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					
 				}
 				BufferedImage  sfondoBox = null;
 				try {
-					sfondoBox = ImageIO.read(new File("C:\\Users\\Mattia\\Desktop\\road.jpg"));
+					sfondoBox = ImageIO.read(new File(projectPath + "\\bin\\board\\road.jpg"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					

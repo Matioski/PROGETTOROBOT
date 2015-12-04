@@ -1,10 +1,13 @@
 package board;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -35,7 +38,7 @@ public class GameBoard {
 					random = rand.nextInt(100);
 				}
 				// 10 percent is between 10/100, so if random is between ten digits
-				else if( random >= 5 && random < 13 ){
+				else if( random >= 5 && random < 15 ){
 					
 					// generate obstacle
 					outer.get(i).add(new Wall(new Position(i,j))) ; 
@@ -67,6 +70,7 @@ public class GameBoard {
 	}
 	public JPanel getFrame(){
 		ImagePanel map = new ImagePanel(new GridLayout(width,height),"C:\\Users\\Mattia\\Desktop\\grass.jpg");
+		
 		//map.setSize((width+1)*50, (height+1)*50);
 		//map.setTitle("BoardGame");
 		//map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,13 +78,13 @@ public class GameBoard {
 			
 			for ( int j = 0 ; j < width ; j++){
 				map.add(outer.get(i).get(j).getComponent());
-				
-				}
+				 
 			}
 		
-		return map;
-		}
 		
+		}
+		return map;
 	}
+}
 
 

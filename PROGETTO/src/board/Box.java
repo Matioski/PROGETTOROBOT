@@ -2,6 +2,7 @@ package board;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -29,16 +30,18 @@ public class Box extends Positionable {
 		// Recover Graphics2D
 		Graphics2D g2 = (Graphics2D) g;
 		// Construct a rectangle and draw it
-		
-//		 BufferedImage immagine = null;
-//			try {
-//				immagine = ImageIO.read(new File("C:\\Users\\Mattia\\Desktop\\road.jpg"));
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				
-//			}
-//			g2.drawImage(immagine, 0 , 0,50,50, null);
-			//g2.drawImage(immagine, 50*pos.getX() , 50*pos.getY(),50,50, null);
+		Rectangle2D.Double box = new Rectangle2D.Double(0,0,50,50);
+		 BufferedImage immagine = null;
+		 String projectPath = System.getProperty("user.dir");
+			try {
+				immagine = ImageIO.read(new File(projectPath + "\\bin\\board\\road.jpg"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				
+			}
+			g2.drawImage(immagine, 0 , 0,50,50, null);
+	//		g2.drawImage(immagine, 50*pos.getX() , 50*pos.getY(),50,50, null);
+			
 		
 	}
 }
