@@ -31,41 +31,76 @@ public class GameBoard {
 				// generate a random number between 0 include and 100 exclusive.
 				random = rand.nextInt(100);
 				// five percent means 5/100 so if random is a number less than five percent
-				if ( random < 5 ){ // generate a Obstacle
+				if ( random < 7 ){ // generate a Obstacle
+					if(i!=0){
+						if(this.isWall(new Position(i-1,j)) ) {
+							outer.get(i).add(new Box(new Position(i,j))) ;  
+							continue;
+						}
+					}
+					else if(j!=0){
+						if(this.isWall(new Position(i,j-1)) ) {
+							outer.get(i).add(new Box(new Position(i,j))) ;  
+							continue;
+						}
+					}
 					
+					outer.get(i).add(new Wall(new Position(i,j))) ; 
 					
-					outer.get(i).add(new Obstacle(new Position(i,j))) ; 
-					random = rand.nextInt(100);
 				}
 				// 10 percent is between 10/100, so if random is between ten digits
-				else if( random >= 5 && random < 15 ){
+				else if( random >= 7 && random < 17 ){
 					
 					// generate obstacle
-					outer.get(i).add(new Wall(new Position(i,j))) ; 
-					random = rand.nextInt(100);
+
+					Random randh = new Random();
+					
+					outer.get(i).add(new Obstacle(new Position(i,j),randh.nextInt(46))) ;
+					
 				}
 				// else 
 				else { // fill with empty
 					outer.get(i).add(new Box(new Position(i,j))) ; 
-					random = rand.nextInt(100);
+					
 				}
+				random = rand.nextInt(100);
 			}
+		}
+
+		Position temp=new Position(rand.nextInt(height-1),rand.nextInt(width-1));
+		
+		while(true){
+			
+			if(this.isEmpty(temp)){
+				outer.get(temp.getX()).set(temp.getY(),new Trunk(temp));
+				break;
+			}
+			temp=new Position(rand.nextInt(height-1),rand.nextInt(width-1));
 		}
 		
 	}
 	public Boolean isObstacle(Position pos){
+		if(!(pos.getX()>=0 && pos.getX()<height) ||!(pos.getY()>=0 && pos.getY()<width) ) return false;
 		Boolean flag=false;
-		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().equals("Obstacle"))flag=true;
+		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().contains("Obstacle"))flag=true;
+		return flag;
+	}
+	public Boolean isTrunk(Position pos){
+		if(!(pos.getX()>=0 && pos.getX()<height) ||!(pos.getY()>=0 && pos.getY()<width) ) return false;
+		Boolean flag=false;
+		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().contains("Trunk"))flag=true;
 		return flag;
 	}
 	public Boolean isEmpty(Position pos){
+		if(!(pos.getX()>=0 && pos.getX()<height) ||!(pos.getY()>=0 && pos.getY()<width) ) return false;
 		Boolean flag=false;
-		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().equals("Box"))flag=true;
+		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().contains("Box"))flag=true;
 		return flag;
 	}
 	public Boolean isWall(Position pos){
+		if(!(pos.getX()>=0 && pos.getX()<height) ||!(pos.getY()>=0 && pos.getY()<width) ) return false;
 		Boolean flag=false;
-		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().equals("Wall"))flag=true;
+		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().contains("Wall"))flag=true;
 		return flag;
 	}
 	public JPanel getFrame(){
