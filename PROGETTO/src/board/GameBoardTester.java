@@ -16,10 +16,9 @@ public class GameBoardTester {
 		frame.add(boardPanel);
 		boardPanel.setSize((10+1)*50, (10+1)*50);
 		frame.setSize(boardPanel.getSize());
-		//frame.setResizable(false);
+		frame.setResizable(false);
 		frame.setVisible(true);
-		String projectPath = System.getProperty("user.dir");
-		System.out.println(projectPath);
+
 	}
 
 }
