@@ -1,8 +1,10 @@
 package board;
 
+import java.awt.Dimension;
+
 import javax.swing.JComponent;
 
-public abstract class Positionable extends Componentable{
+public abstract class Positionable {
 
 	public Position getPosition(){
 		return pos;
@@ -10,6 +12,6 @@ public abstract class Positionable extends Componentable{
 	public void setPosition(Position newPos){
 		pos=newPos;
 	}
-	public abstract JComponent getComponent();
+	public abstract JComponent getComponent(Dimension dF,Dimension dA);
 	private Position pos;
 }

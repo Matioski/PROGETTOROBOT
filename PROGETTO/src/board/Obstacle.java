@@ -1,6 +1,7 @@
 package board;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
@@ -23,13 +24,21 @@ public class Obstacle extends Positionable {
 		super.setPosition(pos);
 		health=h;
 	}
-	class ObstacleComponent extends JComponent {
+class ObstacleComponent extends JComponent {
 		private Position pos;
 		private double heal;
-		public ObstacleComponent(Position newPos, double h){
+		private Dimension dimension;
+		
+		public ObstacleComponent(Position newPos, double h, Dimension dFrame,Dimension dArray ){
 			super();
+			
 			pos=newPos;
 			heal=h;
+			Double height,width;
+			width = (dFrame.getWidth()/(dArray.getWidth()+1));
+			height = (dFrame.getHeight()/(dArray.getHeight()+1));
+			dimension = new Dimension(width.intValue(),height.intValue());
+			
 			
 		}
 		public void paintComponent(Graphics g) {
@@ -59,12 +68,12 @@ public class Obstacle extends Positionable {
 			    
 			 //   g2.draw(label);
 
-				Rectangle2D.Double bar = new Rectangle2D.Double(2, 2, 46, 3);
+				Rectangle2D.Double bar = new Rectangle2D.Double(2, 2, ((dimension.width)-4), 3);
 				
 				
-				Rectangle2D.Double coloredBar = new Rectangle2D.Double(2, 2, heal, 3);
-				g2.drawImage(sfondoBox, 0 , 0,50,50, null);
-				g2.drawImage(immagine, 0 , 0,50,50, null);
+				Rectangle2D.Double coloredBar = new Rectangle2D.Double(2D, 2D, ((dimension.getWidth())-4)/46F*heal, 3F);
+				g2.drawImage(sfondoBox, 0 , 0,(dimension.width),(dimension.height), null);
+				g2.drawImage(immagine, 0 , 0,(dimension.width),(dimension.height), null);
 				g2.setPaint(Color.BLACK);
 				g2.fill(bar);
 				g2.draw(bar);
@@ -83,8 +92,8 @@ public class Obstacle extends Positionable {
 				//g2.drawImage(immagine, 50*pos.getX() , 50*pos.getY(),50,50, null);
 		}
 	}
-	public ObstacleComponent getComponent(){
-		ObstacleComponent tempComp  = new ObstacleComponent(super.getPosition(),health);
+	public ObstacleComponent getComponent(Dimension dF,Dimension dA){
+		ObstacleComponent tempComp  = new ObstacleComponent(super.getPosition(),health,dF,dA);
 		return tempComp;
 	}
 	private double health;

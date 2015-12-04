@@ -15,11 +15,13 @@ public class GameBoardTester {
 		frame.setTitle("BoardGame");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GameBoard board=new GameBoard(x,y);
-		JPanel boardPanel=board.getFrame();
+		JPanel boardPanel=board.getFrame(frame.getSize());
+		
 		frame.add(boardPanel);
-		boardPanel.setSize((x+1)*50, (y+1)*50);
-		frame.setSize(boardPanel.getSize());
-		frame.setResizable(false);
+		//boardPanel.addComponentListener(new ResizeMapListener(boardPanel,frame,board));
+		//boardPanel.setSize((x+1)*50, (y+1)*50);
+		//frame.setSize(boardPanel.getMinimumSize());
+		//frame.setResizable(false);
 		frame.setVisible(true);
 
 	}

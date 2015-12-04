@@ -1,5 +1,7 @@
 package board;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
@@ -11,6 +13,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
+import board.Obstacle.ObstacleComponent;
+
 
 
 public class Wall extends Positionable {
@@ -21,9 +25,20 @@ public class Wall extends Positionable {
 	}
 	class WallComponent extends JComponent {
 		private Position pos;
-		public WallComponent(Position newPos){
+		
+		private Dimension dimension;
+		
+		public WallComponent(Position newPos, Dimension dFrame,Dimension dArray ){
 			super();
+			
 			pos=newPos;
+			
+			Double height,width;
+			width = (dFrame.getWidth()/(dArray.getWidth()+1));
+			height = (dFrame.getHeight()/(dArray.getHeight()+1));
+			dimension = new Dimension(width.intValue(),height.intValue());
+			
+			
 		}
 		public void paintComponent(Graphics g) {
 			
@@ -31,10 +46,11 @@ public class Wall extends Positionable {
 			// Recover Graphics2D
 			Graphics2D g2 = (Graphics2D) g;
 			// Construct a rectangle and draw it
-			BufferedImage immagine = null;
-			 String projectPath = System.getProperty("user.dir");
-				try {
-					immagine = ImageIO.read(new File(projectPath + "\\src\\board\\images.jpg"));
+			
+				 BufferedImage immagine = null;
+				 String projectPath = System.getProperty("user.dir");
+					try {
+						immagine = ImageIO.read(new File(projectPath + "\\src\\board\\images.jpg"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					
@@ -46,15 +62,24 @@ public class Wall extends Positionable {
 					// TODO Auto-generated catch block
 					
 				}
-				g2.drawImage(sfondoBox, 0 , 0,50,50, null);
-				g2.drawImage(immagine, 0 , 0,50,50, null);	
+			//	final JLabel label = new JLabel("Label");
+			 //   label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			    
+			 //   g2.draw(label);
+
+				
+				g2.drawImage(sfondoBox, 0 , 0,(dimension.width),(dimension.height), null);
+				g2.drawImage(immagine, 0 , 0,(dimension.width),(dimension.height), null);
+							
 				//g2.drawImage(sfondoBox, 50*pos.getX() , 50*pos.getY(),50,50, null);
+			
 				//g2.drawImage(immagine, 50*pos.getX() , 50*pos.getY(),50,50, null);
 		}
 	}
-	public WallComponent getComponent(){
-		WallComponent tempComp  = new WallComponent(super.getPosition());
+	public WallComponent getComponent(Dimension dF,Dimension dA){
+		WallComponent tempComp  = new WallComponent(super.getPosition(),dF,dA);
 		return tempComp;
 	}
 
 }
+

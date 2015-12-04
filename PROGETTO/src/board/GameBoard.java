@@ -1,6 +1,7 @@
 package board;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,19 +16,19 @@ import javax.swing.JPanel;
 public class GameBoard {
 	private ArrayList<ArrayList<Positionable>> outer = new ArrayList<ArrayList<Positionable>>();
     private ArrayList<Positionable> inner = new ArrayList<Positionable>(); 
-    private int height;
     private int width;
+    private int height;
 	public GameBoard(int x, int y){
-		height=x;
-		width=y;
+		width=x;
+		height=y;
 		Random rand = new Random();
 		int random ; 
 		// for every row
-		for ( int i = 0  ; i < height ; i++){
+		for ( int i = 0  ; i < width ; i++){
 			// for every column
 			inner=new ArrayList<Positionable>(); 
 			outer.add(inner);
-			for ( int j = 0 ; j < width ; j++){
+			for ( int j = 0 ; j < height ; j++){
 				// generate a random number between 0 include and 100 exclusive.
 				random = rand.nextInt(100);
 				// five percent means 5/100 so if random is a number less than five percent
@@ -67,7 +68,7 @@ public class GameBoard {
 			}
 		}
 
-		Position temp=new Position(rand.nextInt(height-1),rand.nextInt(width-1));
+		Position temp=new Position(rand.nextInt(width-1),rand.nextInt(height-1));
 		
 		while(true){
 			
@@ -75,45 +76,45 @@ public class GameBoard {
 				outer.get(temp.getX()).set(temp.getY(),new Trunk(temp));
 				break;
 			}
-			temp=new Position(rand.nextInt(height-1),rand.nextInt(width-1));
+			temp=new Position(rand.nextInt(width-1),rand.nextInt(height-1));
 		}
 		
 	}
 	public Boolean isObstacle(Position pos){
-		if(!(pos.getX()>=0 && pos.getX()<height) ||!(pos.getY()>=0 && pos.getY()<width) ) return false;
+		if(!(pos.getX()>=0 && pos.getX()<width) ||!(pos.getY()>=0 && pos.getY()<height) ) return false;
 		Boolean flag=false;
 		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().contains("Obstacle"))flag=true;
 		return flag;
 	}
 	public Boolean isTrunk(Position pos){
-		if(!(pos.getX()>=0 && pos.getX()<height) ||!(pos.getY()>=0 && pos.getY()<width) ) return false;
+		if(!(pos.getX()>=0 && pos.getX()<width) ||!(pos.getY()>=0 && pos.getY()<height) ) return false;
 		Boolean flag=false;
 		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().contains("Trunk"))flag=true;
 		return flag;
 	}
 	public Boolean isEmpty(Position pos){
-		if(!(pos.getX()>=0 && pos.getX()<height) ||!(pos.getY()>=0 && pos.getY()<width) ) return false;
+		if(!(pos.getX()>=0 && pos.getX()<width) ||!(pos.getY()>=0 && pos.getY()<height) ) return false;
 		Boolean flag=false;
 		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().contains("Box"))flag=true;
 		return flag;
 	}
 	public Boolean isWall(Position pos){
-		if(!(pos.getX()>=0 && pos.getX()<height) ||!(pos.getY()>=0 && pos.getY()<width) ) return false;
+		if(!(pos.getX()>=0 && pos.getX()<width) ||!(pos.getY()>=0 && pos.getY()<height) ) return false;
 		Boolean flag=false;
 		if(outer.get(pos.getX()).get(pos.getY()).getClass().getName().contains("Wall"))flag=true;
 		return flag;
 	}
-	public JPanel getFrame(){
+	public JPanel getFrame(Dimension dF){
 		String projectPath = System.getProperty("user.dir");
-		ImagePanel map = new ImagePanel(new GridLayout(width,height),projectPath + "\\src\\board\\grass.jpg");
+		ImagePanel map = new ImagePanel(new GridLayout(height,width),projectPath + "\\src\\board\\grass.jpg");
 		
 		//map.setSize((width+1)*50, (height+1)*50);
 		//map.setTitle("BoardGame");
 		//map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		for ( int i = 0  ; i < height ; i++){
+		for ( int i = 0  ; i < width ; i++){
 			
-			for ( int j = 0 ; j < width ; j++){
-				map.add(outer.get(i).get(j).getComponent());
+			for ( int j = 0 ; j < height ; j++){
+				map.add(outer.get(i).get(j).getComponent(dF,new Dimension(width,height)));
 				 
 			}
 		
