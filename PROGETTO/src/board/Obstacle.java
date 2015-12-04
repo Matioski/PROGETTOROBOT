@@ -38,14 +38,14 @@ public class Obstacle extends Positionable {
 				 BufferedImage immagine = null;
 				 String projectPath = System.getProperty("user.dir");
 					try {
-						immagine = ImageIO.read(new File(projectPath + "\\bin\\board\\download.png"));
+						immagine = ImageIO.read(new File(projectPath + "\\src\\board\\download.png"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					
 				}
 				BufferedImage  sfondoBox = null;
 				try {
-					sfondoBox = ImageIO.read(new File(projectPath + "\\bin\\board\\road.jpg"));
+					sfondoBox = ImageIO.read(new File(projectPath + "\\src\\board\\road.jpg"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					

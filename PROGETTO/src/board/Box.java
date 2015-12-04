@@ -34,7 +34,7 @@ public class Box extends Positionable {
 		 BufferedImage immagine = null;
 		 String projectPath = System.getProperty("user.dir");
 			try {
-				immagine = ImageIO.read(new File(projectPath + "\\bin\\board\\road.jpg"));
+				immagine = ImageIO.read(new File(projectPath + "\\src\\board\\road.jpg"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				

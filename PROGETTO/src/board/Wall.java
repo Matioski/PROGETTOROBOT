@@ -34,14 +34,14 @@ public class Wall extends Positionable {
 			BufferedImage immagine = null;
 			 String projectPath = System.getProperty("user.dir");
 				try {
-					immagine = ImageIO.read(new File(projectPath + "\\bin\\board\\image.jpg"));
+					immagine = ImageIO.read(new File(projectPath + "\\src\\board\\images.jpg"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					
 				}
 				BufferedImage  sfondoBox = null;
 				try {
-					sfondoBox = ImageIO.read(new File(projectPath + "\\bin\\board\\road.jpg"));
+					sfondoBox = ImageIO.read(new File(projectPath + "\\src\\board\\road.jpg"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					
