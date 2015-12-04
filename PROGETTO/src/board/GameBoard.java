@@ -69,7 +69,8 @@ public class GameBoard {
 		return flag;
 	}
 	public JPanel getFrame(){
-		ImagePanel map = new ImagePanel(new GridLayout(width,height),"C:\\Users\\Mattia\\Desktop\\grass.jpg");
+		String projectPath = System.getProperty("user.dir");
+		ImagePanel map = new ImagePanel(new GridLayout(width,height),projectPath + "\\src\\board\\grass.jpg");
 		
 		//map.setSize((width+1)*50, (height+1)*50);
 		//map.setTitle("BoardGame");
