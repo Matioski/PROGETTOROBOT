@@ -1,13 +1,15 @@
 package board;
 
-public abstract class Positionable {
+import javax.swing.JComponent;
+
+public abstract class Positionable extends Componentable{
 
 	public Position getPosition(){
 		return pos;
 	}	
 	public void setPosition(Position newPos){
-		pos.setX(newPos.getX());
-		pos.setY(newPos.getY());
+		pos=newPos;
 	}
+	public abstract JComponent getComponent();
 	private Position pos;
 }
