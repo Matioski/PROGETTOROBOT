@@ -1,8 +1,11 @@
-package board;
+package positionable;
 
 import java.awt.Dimension;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
+
+import board.Position;
 
 public abstract class Positionable {
 
@@ -14,4 +17,5 @@ public abstract class Positionable {
 	}
 	public abstract JComponent getComponent(Dimension dF,Dimension dA);
 	private Position pos;
+
 }

@@ -1,4 +1,4 @@
-package board;
+package positionable;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,9 +11,13 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 
-import board.Obstacle.ObstacleComponent;
+import board.Position;
+import positionable.Obstacle.ObstacleComponent;
 
 
 

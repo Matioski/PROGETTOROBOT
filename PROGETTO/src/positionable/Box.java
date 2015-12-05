@@ -1,4 +1,4 @@
-package board;
+package positionable;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,9 +11,15 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-import board.Obstacle.ObstacleComponent;
+import board.Position;
+import positionable.Obstacle.ObstacleComponent;
 
 public class Box extends Positionable {
 
@@ -56,14 +62,9 @@ class BoxComponent extends JComponent {
 				// TODO Auto-generated catch block
 				
 			}
-		//	final JLabel label = new JLabel("Label");
-		 //   label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		    
-		 //   g2.draw(label);
-
-
+		
 			g2.drawImage(sfondoBox, 0 , 0,(dimension.width),(dimension.height), null);
-	
+		
 			
 		
 			//g2.drawImage(sfondoBox, 50*pos.getX() , 50*pos.getY(),50,50, null);

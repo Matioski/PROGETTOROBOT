@@ -11,6 +11,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import positionable.Box;
+import positionable.Obstacle;
+import positionable.Positionable;
+import positionable.Trunk;
+import positionable.Wall;
+
 
 
 public class GameBoard {
@@ -120,6 +126,7 @@ public class GameBoard {
 		
 		
 		}
+		map.setSize(new Dimension(((dF.width)/(width+1)),((dF.height)/(height+1))));
 		return map;
 	}
 }

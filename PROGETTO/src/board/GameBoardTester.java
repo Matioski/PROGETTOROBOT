@@ -18,7 +18,7 @@ public class GameBoardTester {
 		JPanel boardPanel=board.getFrame(frame.getSize());
 		
 		frame.add(boardPanel);
-		//boardPanel.addComponentListener(new ResizeMapListener(boardPanel,frame,board));
+		//frame.addComponentListener(new ResizeMapListener(boardPanel,frame,board));
 		//boardPanel.setSize((x+1)*50, (y+1)*50);
 		//frame.setSize(boardPanel.getMinimumSize());
 		//frame.setResizable(false);

@@ -19,11 +19,11 @@ public class ImagePanel extends JPanel {
 		super(layout);
 		
 		 this.img = new ImageIcon(img).getImage();
-	    Dimension size = new Dimension(this.img.getWidth(null), this.img.getHeight(null));
-	    setPreferredSize(size);
-	    setMinimumSize(size);
-	    setMaximumSize(size);
-	    setSize(size);
+	 //   Dimension size = new Dimension(this.img.getWidth(null), this.img.getHeight(null));
+	//    setPreferredSize(size);
+	//    setMinimumSize(size);
+	//    setMaximumSize(size);
+	 //   setSize(size);
 	    setLayout(layout);
 		
 		
