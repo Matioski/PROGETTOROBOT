@@ -7,22 +7,26 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 class ResizeMapListener extends ComponentAdapter {
-	private JPanel pan;
-	private JFrame fram;
 	private GameBoard lol;
-	public ResizeMapListener(JPanel pane,JFrame frame,GameBoard board){
-		pan=pane;
-		fram=frame;
-		lol=board;
-		
+	private JFrame fram;
+	private JPanel panel;
+
+	public ResizeMapListener(JPanel p, JFrame frame, GameBoard board) {
+		lol = board;
+		fram = frame;
+		panel = p;
+
 	}
-    public void componentResized(ComponentEvent e) {
-        //Recalculate the variable you mentioned
-    	
-    	pan=lol.getFrame(fram.getSize());
-    	pan.repaint();
-    	fram.repaint();
-    	fram.setVisible(true);
-    	
-    }
+
+	@Override
+	public void componentResized(ComponentEvent e) {
+		// Recalculate the variable you mentioned
+
+		fram.remove(panel);
+		fram.add(lol.getFrame(fram.getSize()), 0);
+		fram.repaint();
+
+		fram.setVisible(true);
+
+	}
 }
