@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JComponent;
 import board.Position;
 
-public abstract class Positionable {
+public abstract class Positionable  {
 
 	public Position getPosition() {
 		return pos;

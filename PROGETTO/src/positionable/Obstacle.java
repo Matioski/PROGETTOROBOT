@@ -11,6 +11,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
+
+import board.HealthComponent;
 import board.Position;
 
 public class Obstacle extends Positionable {
@@ -54,6 +56,7 @@ public class Obstacle extends Positionable {
 				// TODO Auto-generated catch block
 
 			}
+			
 			/*
 			 * BufferedImage sfondoBox = null; try { sfondoBox =
 			 * ImageIO.read(new File(projectPath + "\\src\\board\\road.jpg")); }
@@ -66,14 +69,17 @@ public class Obstacle extends Positionable {
 
 			// g2.draw(label);
 
-			Rectangle2D.Double bar = new Rectangle2D.Double(2, 2, ((dimension.width) - 4), 3);
+			/*Rectangle2D.Double bar = new Rectangle2D.Double(2, 2, ((dimension.width) - 4), 3);
 
 			Rectangle2D.Double coloredBar = new Rectangle2D.Double(2D, 2D, ((dimension.getWidth()) - 4) / 46F * heal,
 					3F);
+					*/
 			// g2.drawImage(sfondoBox, 0 ,
 			// 0,(dimension.width),(dimension.height), null);
 			g2.drawImage(immagine, 0, 0, (dimension.width), (dimension.height), null);
-			g2.setPaint(Color.BLACK);
+			new HealthComponent(heal,dimension.getWidth()).paintComponent(g2);
+			
+			/*g2.setPaint(Color.BLACK);
 			g2.fill(bar);
 			g2.draw(bar);
 			if (heal >= (46F * 50F / 100F))
@@ -84,6 +90,7 @@ public class Obstacle extends Positionable {
 				g2.setPaint(Color.RED);
 			g2.fill(coloredBar);
 			g2.draw(coloredBar);
+			*/
 
 			// g2.drawImage(sfondoBox, 50*pos.getX() , 50*pos.getY(),50,50,
 			// null);
