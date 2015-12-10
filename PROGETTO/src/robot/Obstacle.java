@@ -1,4 +1,4 @@
-package positionable;
+package robot;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

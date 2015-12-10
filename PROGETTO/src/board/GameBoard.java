@@ -8,10 +8,10 @@ import java.util.Random;
 import javax.swing.JPanel;
 
 import positionable.Box;
-import positionable.Obstacle;
 import positionable.Positionable;
 import positionable.Trunk;
 import positionable.Wall;
+import robot.Obstacle;
 
 public class GameBoard {
 	private ArrayList<ArrayList<Positionable>> outer = new ArrayList<ArrayList<Positionable>>();

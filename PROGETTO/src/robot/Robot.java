@@ -6,7 +6,7 @@ import positionable.Positionable;
 import javax.swing.JComponent;
 
 
-public abstract class Robot extends Positionable {
+public abstract class Robot extends Attackable {
 	private double energy,strength,health;
 	private String team,name;
 	public Robot(String name,String team,double strength){
