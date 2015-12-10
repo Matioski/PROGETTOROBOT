@@ -46,18 +46,18 @@ public class HealthComponent extends JComponent {
 
 		//Rectangle2D.Double bar = new Rectangle2D.Double(2, 2, ((width) - 4), 3);
 
-		Rectangle2D.Double coloredBar = new Rectangle2D.Double(2D, 2D, ((width - 4) / 46F * health),3F);
+		Rectangle2D.Double coloredBar = new Rectangle2D.Double(2D, 2D, ((width - 4) / 100F * health),3F);
 				// g2.drawImage(sfondoBox, 0 ,
 				// 0,(dimension.width),(dimension.height), null);
 
 				g2.setPaint(Color.BLACK);
 				//g2.fill(bar);
 				//g2.draw(bar);
-				if (health >= (46F * 50F / 100F))
+				if (health >= (100F * 50F / 100F))
 					g2.setPaint(Color.GREEN);
-				else if (health > (46F / 100F * 25F) && health < (46F / 100F * 50F))
+				else if (health > (100F / 100F * 25F) && health < (100F / 100F * 50F))
 					g2.setPaint(Color.YELLOW);
-				else if (health < (46F / 100F * 25F))
+				else if (health < (100F / 100F * 25F))
 					g2.setPaint(Color.RED);
 				g2.fill(coloredBar);
 				g2.draw(coloredBar);

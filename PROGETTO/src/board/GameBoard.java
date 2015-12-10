@@ -58,7 +58,7 @@ public class GameBoard {
 
 					Random randh = new Random();
 
-					outer.get(i).add(new Obstacle(new Position(i, j), randh.nextInt(46)));
+					outer.get(i).add(new Obstacle(new Position(i, j), randh.nextInt(100)));
 
 				}
 				// else

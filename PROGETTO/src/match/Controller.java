@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 import robot.Robot;
 
-public abstract class Controller<T extends Robot> {
+public  class Controller<T extends Robot> {
 	private ArrayList<Move> nextMove = new ArrayList<Move>();
 	private Move nextmove;
 	private T robot;
 	public Controller(){
 		
 	}
-	public void canUp(){
-		
+	public Boolean canUp(){
+		Boolean flag=false;
+		return flag;
 	}
 	public void canDown(){
 		
