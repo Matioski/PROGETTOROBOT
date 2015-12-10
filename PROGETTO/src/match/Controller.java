@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import robot.Robot;
 
 public  class Controller<T extends Robot> {
-	private ArrayList<Move> nextMove = new ArrayList<Move>();
+	private ArrayList<Move> possibleMoves = new ArrayList<Move>();
 	private Move nextmove;
 	private T robot;
 	public Controller(){
@@ -43,6 +43,9 @@ public  class Controller<T extends Robot> {
 		
 	}
 	public void performAction(){
+		
+	}
+	public void fillPossibleMoves(){
 		
 	}
 }
