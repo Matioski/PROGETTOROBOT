@@ -12,6 +12,7 @@ public class Box extends Positionable {
 		// TODO Auto-generated constructor stub
 		super.setPosition(pos);
 	}
+	
 
 	class BoxComponent extends JComponent {
 		// private Position pos;

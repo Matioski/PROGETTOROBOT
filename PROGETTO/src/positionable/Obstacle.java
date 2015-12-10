@@ -1,10 +1,9 @@
 package positionable;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,13 +14,22 @@ import javax.swing.JComponent;
 import board.HealthComponent;
 import board.Position;
 
-public class Obstacle extends Positionable {
+public class Obstacle extends Attackable {
 
 	public Obstacle(Position pos, double h) {
 		// TODO Auto-generated constructor stub
 		super.setPosition(pos);
 		health = h;
 	}
+
+	public void pulled() {
+
+	}
+
+	public void pushed() {
+
+	}
+	
 
 	class ObstacleComponent extends JComponent {
 		private Position pos;
@@ -56,7 +64,7 @@ public class Obstacle extends Positionable {
 				// TODO Auto-generated catch block
 
 			}
-			
+
 			/*
 			 * BufferedImage sfondoBox = null; try { sfondoBox =
 			 * ImageIO.read(new File(projectPath + "\\src\\board\\road.jpg")); }
@@ -69,28 +77,25 @@ public class Obstacle extends Positionable {
 
 			// g2.draw(label);
 
-			/*Rectangle2D.Double bar = new Rectangle2D.Double(2, 2, ((dimension.width) - 4), 3);
-
-			Rectangle2D.Double coloredBar = new Rectangle2D.Double(2D, 2D, ((dimension.getWidth()) - 4) / 46F * heal,
-					3F);
-					*/
+			/*
+			 * Rectangle2D.Double bar = new Rectangle2D.Double(2, 2,
+			 * ((dimension.width) - 4), 3);
+			 * 
+			 * Rectangle2D.Double coloredBar = new Rectangle2D.Double(2D, 2D,
+			 * ((dimension.getWidth()) - 4) / 46F * heal, 3F);
+			 */
 			// g2.drawImage(sfondoBox, 0 ,
 			// 0,(dimension.width),(dimension.height), null);
 			g2.drawImage(immagine, 0, 0, (dimension.width), (dimension.height), null);
-			new HealthComponent(heal,dimension.getWidth()).paintComponent(g2);
-			
-			/*g2.setPaint(Color.BLACK);
-			g2.fill(bar);
-			g2.draw(bar);
-			if (heal >= (46F * 50F / 100F))
-				g2.setPaint(Color.GREEN);
-			else if (heal > (46F / 100F * 25F) && heal < (46F / 100F * 50F))
-				g2.setPaint(Color.YELLOW);
-			else if (heal < (46F / 100F * 25F))
-				g2.setPaint(Color.RED);
-			g2.fill(coloredBar);
-			g2.draw(coloredBar);
-			*/
+			new HealthComponent(heal, dimension.getWidth()).paintComponent(g2);
+
+			/*
+			 * g2.setPaint(Color.BLACK); g2.fill(bar); g2.draw(bar); if (heal >=
+			 * (46F * 50F / 100F)) g2.setPaint(Color.GREEN); else if (heal >
+			 * (46F / 100F * 25F) && heal < (46F / 100F * 50F))
+			 * g2.setPaint(Color.YELLOW); else if (heal < (46F / 100F * 25F))
+			 * g2.setPaint(Color.RED); g2.fill(coloredBar); g2.draw(coloredBar);
+			 */
 
 			// g2.drawImage(sfondoBox, 50*pos.getX() , 50*pos.getY(),50,50,
 			// null);
