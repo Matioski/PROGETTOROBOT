@@ -1,4 +1,4 @@
-package robot;
+package item;
 
 public class DefenseWeapon extends Weapon {
 	private double defense;
@@ -7,6 +7,7 @@ public class DefenseWeapon extends Weapon {
 	public DefenseWeapon(String name,double defense){
 		this.name=name;
 		this.defense=defense;
+		super.setOwner(null);
 	}
 	public double getDefense(){
 		return defense;

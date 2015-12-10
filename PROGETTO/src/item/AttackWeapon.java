@@ -1,5 +1,7 @@
-package robot;
+package item;
 
+import attackable.Fighter;
+import attackable.Robot;
 public class AttackWeapon extends Weapon {
 	private double attack;
 	private int criticalrate,range;
@@ -7,6 +9,7 @@ public class AttackWeapon extends Weapon {
 	public AttackWeapon(String name,double attack){
 		this.name=name;
 		this.attack=attack;
+		super.setOwner(null);
 	}
 	public double getAttack(){
 		return attack;
@@ -14,4 +17,10 @@ public class AttackWeapon extends Weapon {
 	public int getRange(){
 		return range;
 	}
-}
+	
+		
+	}
+
+	
+
+

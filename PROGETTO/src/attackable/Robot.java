@@ -1,19 +1,19 @@
-package robot;
+package attackable;
 
 import java.awt.Dimension;
 import positionable.Positionable;
 
 import javax.swing.JComponent;
+import item.Useable;
 
-
-public abstract class Robot extends Attackable {
-	private double energy,strength,health;
+public abstract class Robot <T extends Useable> extends Attackable  {
+	private double energy,strength;
 	private String team,name;
 	public Robot(String name,String team,double strength){
 		this.name=name;
 		this.team=team;
 		this.energy=100;
-		this.health=100;
+		super.setHealth(100);
 		this.strength=strength;
 	}
 
@@ -32,17 +32,17 @@ public abstract class Robot extends Attackable {
 	public double getStrength(){
 		return strength;
 	}
-	public void setStrength(){
+	public void setStrength(double strength){
 		this.strength=strength;
 	}
 	public String getTeamName(){
 		return team;
 	}
 	public double getHealth(){
-		return health;
+		return super.getHealth();
 	}
-	public void setHealth(){
-		this.health=health;
+	public void setHealth(double h){
+		super.setHealth(h);
 	}
 	public void pushObstacle(){
 
@@ -50,12 +50,8 @@ public abstract class Robot extends Attackable {
 	public void pullObstacle(){
 
 	}
-	public void drop(){
-
-	}
-	public void pick(){
-
-	}
+	public abstract void drop(T item);
+	public abstract void pick(T item);
 
 	@Override
 	public abstract JComponent getComponent(Dimension dF,Dimension dA);

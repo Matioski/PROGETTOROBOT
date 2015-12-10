@@ -2,7 +2,7 @@ package match;
 
 import java.util.ArrayList;
 
-import robot.Robot;
+import attackable.Robot;
 
 public  class Controller<T extends Robot> {
 	private ArrayList<Move> possibleMoves = new ArrayList<Move>();
@@ -11,10 +11,8 @@ public  class Controller<T extends Robot> {
 	public Controller(){
 		
 	}
-	public Boolean canUp(){
-		Boolean flag=false;
-		
-		return flag;
+	public void canUp(){
+ 
 	}
 	public void canDown(){
 		

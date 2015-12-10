@@ -7,11 +7,11 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 
+import attackable.Obstacle;
 import positionable.Box;
 import positionable.Positionable;
 import positionable.Trunk;
 import positionable.Wall;
-import robot.Obstacle;
 
 public class GameBoard {
 	private ArrayList<ArrayList<Positionable>> outer = new ArrayList<ArrayList<Positionable>>();
@@ -58,7 +58,7 @@ public class GameBoard {
 
 					Random randh = new Random();
 
-					outer.get(i).add(new Obstacle(new Position(i, j), randh.nextInt(100)));
+					outer.get(i).add(new Obstacle(new Position(i, j), randh.nextInt(99)+1));
 
 				}
 				// else

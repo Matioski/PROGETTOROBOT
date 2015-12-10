@@ -1,38 +1,46 @@
-package robot;
+package attackable;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 import board.Position;
+import item.AttackWeapon;
+import item.ChargingItem;
+import item.DefenseWeapon;
+import item.Item;
+import item.RepairingItem;
+import item.Weapon;
 
-public class Fighter extends Robot {
-	private  AttackWeapon attackWeapon;
-	private DefenseWeapon defenseWeapon;
 
-
-	public Fighter(String name,String team,double strength){
+public class Worker extends Robot<Item> {
+	private  ChargingItem chargingItem;
+	private RepairingItem repairingItem;
+	public Worker(String name,String team,double strength){
 		super( name, team, strength);
+		chargingItem=null;
+		repairingItem=null;
 	}
-	public void attack(){
+
+	public void charge(){
 
 	}
-	public double getAttack(){
-		return attackWeapon.getAttack();
+	public void repair(){
+
 	}
-	public double getDefense(){
-		return defenseWeapon.getDefense();
-	}
-	class FighterComponent extends JComponent {
+	class WorkerComponent extends JComponent {
 		private Position pos;
 		private double heal;
 		private Dimension dimension;
 
-		public FighterComponent(Position newPos, double h, Dimension dFrame,Dimension dArray ){
+		public WorkerComponent(Position newPos, double h, Dimension dFrame,Dimension dArray ){
 			super();
 
 			pos=newPos;
@@ -73,9 +81,19 @@ public class Fighter extends Robot {
 			g2.drawImage(immagine, 0 , 0,(dimension.width),(dimension.height), null);
 		}
 	}
+	public void pick(Item item) {
+   	    if(item.getClass().getName().contains("Chargingitem")) chargingItem=(ChargingItem)item;
+   	    else if(item.getClass().getName().contains("DefenseWeapon")) repairingItem=(RepairingItem)item;
+   	                        }
 	@Override
-	public FighterComponent getComponent(Dimension dF,Dimension dA){
-		FighterComponent tempComp  = new FighterComponent(super.getPosition(),super.getHealth(),dF,dA);
+	public void drop(Item item) {
+		// TODO Auto-generated method stub
+		
+	}
+               
+	@Override
+	public WorkerComponent getComponent(Dimension dF,Dimension dA){
+		WorkerComponent tempComp  = new WorkerComponent(super.getPosition(),super.getHealth(),dF,dA);
 		return tempComp;
 	}
 }

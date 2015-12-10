@@ -1,4 +1,4 @@
-package robot;
+package attackable;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -19,7 +19,7 @@ public class Obstacle extends Attackable {
 	public Obstacle(Position pos, double h) {
 		// TODO Auto-generated constructor stub
 		super.setPosition(pos);
-		health = h;
+		super.setHealth(h);
 	}
 
 	public void pulled() {
@@ -36,11 +36,10 @@ public class Obstacle extends Attackable {
 		private double heal;
 		private Dimension dimension;
 
-		public ObstacleComponent(Position newPos, double h, Dimension dFrame, Dimension dArray) {
+		public ObstacleComponent(Position newPos,double h, Dimension dFrame, Dimension dArray) {
 			super();
-
-			pos = newPos;
-			heal = h;
+           pos = newPos;
+			heal =h;
 			Double height, width;
 			width = (dFrame.getWidth() / (dArray.getWidth() + 1));
 			height = (dFrame.getHeight() / (dArray.getHeight() + 1));
@@ -107,10 +106,9 @@ public class Obstacle extends Attackable {
 
 	@Override
 	public ObstacleComponent getComponent(Dimension dF, Dimension dA) {
-		ObstacleComponent tempComp = new ObstacleComponent(super.getPosition(), health, dF, dA);
+		ObstacleComponent tempComp = new ObstacleComponent(super.getPosition(), super.getHealth(), dF, dA);
 		return tempComp;
 	}
 
-	private double health;
 
 }
