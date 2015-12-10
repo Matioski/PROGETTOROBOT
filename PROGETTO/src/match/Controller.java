@@ -13,6 +13,7 @@ public  class Controller<T extends Robot> {
 	}
 	public Boolean canUp(){
 		Boolean flag=false;
+		
 		return flag;
 	}
 	public void canDown(){
