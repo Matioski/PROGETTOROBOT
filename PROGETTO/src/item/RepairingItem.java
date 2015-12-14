@@ -2,9 +2,9 @@ package item;
 
 public class RepairingItem extends Item {
 	private double repairingrate;
-	private String name;
-	public RepairingItem(String n,double h){
-		name=n;
+	
+	public RepairingItem(String name,double h){
+		super.setName(name);
 		repairingrate=h;
 		super.setOwner(null);
 	}

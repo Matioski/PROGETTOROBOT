@@ -4,10 +4,10 @@ import attackable.Robot;
 
 public class ChargingItem extends Item {
 	private double healingrate;
-	private String name;
 	
-	public ChargingItem(String n,double h){
-		name=n;
+	
+	public ChargingItem(String name,double h){
+		super.setName(name);
 		healingrate=h;
 		super.setOwner(null);
 	}

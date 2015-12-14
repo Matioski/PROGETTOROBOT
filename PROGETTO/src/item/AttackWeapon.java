@@ -5,9 +5,9 @@ import attackable.Robot;
 public class AttackWeapon extends Weapon {
 	private double attack;
 	private int criticalrate,range;
-	private String name;
+	
 	public AttackWeapon(String name,double attack){
-		this.name=name;
+		super.setName(name);
 		this.attack=attack;
 		super.setOwner(null);
 	}
