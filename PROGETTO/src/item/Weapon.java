@@ -1,21 +1,42 @@
 package item;
 
+import java.io.Serializable;
+
 import attackable.Fighter;
 
-public abstract class Weapon implements Useable<Fighter> {
+/**
+ * Abstract class of the weapons that can be equipped by a Fighter
+ * @author Mattia Rosselli
+ *
+ */
+public abstract class Weapon implements Useable<Fighter>, Serializable {
 	private Fighter owner;
 	private String name;
-	public Fighter getOwner(){
-		return owner;
-	}
-	public void setOwner (Fighter f){
-		f.pick(this);
-		owner=f;
-	}
-	public String getName(){
+
+	/**
+	 * Method that returns the name of the weapon
+	 * @return name of the weapon
+	 */
+	public String getName() {
 		return name;
 	}
-	public void setName(String name){
-		this.name=name;
+
+	@Override
+	public Fighter getOwner() {
+		return owner;
+	}
+
+	/**
+	 * Sets the name to a weapon
+	 * @param name name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public void setOwner(Fighter f) {
+		owner = f;
+
 	}
 }

@@ -5,29 +5,29 @@ import java.io.Serializable;
 import positionable.Box;
 
 /**
- * Class that produces defense Weapons for the Fighter
+ * Class fot defense items that can be used from workers
  * @author Mattia Rosselli
  *
  */
-public class DefenseWeapon extends Weapon implements Cloneable, Serializable {
+public class DefenseItem extends Item implements Cloneable, Serializable {
 	private double defense;
 
 	/**
-	 * Create a new defenseWeapon with given name and defense value
-	 * @param name Name of the weapon
-	 * @param defense defense value
+	 * Creates a DefenseItem with a specified name and defense
+	 * @param name Name of the item
+	 * @param h defense value
 	 */
-	public DefenseWeapon(String name, double defense) {
+	public DefenseItem(String name, double h) {
 		super.setName(name);
-		this.defense = defense;
+		defense = h;
 		super.setOwner(null);
 	}
 
 	@Override
-	public DefenseWeapon clone() {
+	public DefenseItem clone() {
 		try {
 
-			DefenseWeapon cloned = (DefenseWeapon) super.clone();
+			DefenseItem cloned = (DefenseItem) super.clone();
 			if (super.getOwner() != null)
 				cloned.setOwner(super.getOwner().clone());
 			return cloned;
@@ -41,17 +41,17 @@ public class DefenseWeapon extends Weapon implements Cloneable, Serializable {
 	public boolean equals(Object otherObject) {
 		if (otherObject == null)
 			return false;
-		if (otherObject.getClass()!=getClass())
+		if (otherObject.getClass()!=getClass() )
 			return false;
-		DefenseWeapon other = (DefenseWeapon) otherObject;
+		DefenseItem other = (DefenseItem) otherObject;
 		return defense == other.defense && super.getName().equals(other.getName())
 				&& ((super.getOwner() == null && other.getOwner() == null)
 						|| super.getOwner().equals(other.getOwner()));
 	}
 
 	/**
-	 * Get the defense value of the weapon
-	 * @return defense value
+	 * Get the defense value of the item
+	 * @return the defense value
 	 */
 	public double getDefense() {
 		return defense;

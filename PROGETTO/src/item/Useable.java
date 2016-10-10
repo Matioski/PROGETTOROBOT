@@ -2,8 +2,23 @@ package item;
 
 import attackable.Robot;
 
-public interface Useable<T extends Robot>{
-           public void setOwner(T r);
-           public T getOwner();
-           
+/**
+ * Elements that can be equipped by Robots
+ * @author Mattia Rosselli
+ *
+ * @param <T> Type of Robot
+ */
+public interface Useable<T extends Robot> {
+	/**
+	 * returns the owner
+	 * @return the owner
+	 */
+	public T getOwner();
+
+	/**
+	 * Set the Owner
+	 * @param r owner to set
+	 */
+	public void setOwner(T r);
+
 }

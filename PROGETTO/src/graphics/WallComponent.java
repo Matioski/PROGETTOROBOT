@@ -11,16 +11,28 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 import board.Position;
+import positionable.Wall;
 
+/**
+ * Class that manage wall Components
+ * @author Mattia Rosselli
+ *
+ */
 public class WallComponent extends JComponent {
 	private Position pos;
 
 	private Dimension dimension;
 
-	public WallComponent(Position newPos, Dimension dFrame, Dimension dArray) {
+	/**
+	 * Creates a wall component with defined dimensions
+	 * @param wall Object
+	 * @param dFrame frame dimension
+	 * @param dArray array dimension
+	 */
+	public WallComponent(Wall wall, Dimension dFrame, Dimension dArray) {
 		super();
 
-		pos = newPos;
+		pos = wall.getPosition();
 
 		Double height, width;
 		width = (dFrame.getWidth() / (dArray.getWidth() + 1));
@@ -35,36 +47,18 @@ public class WallComponent extends JComponent {
 		// TODO Auto-generated constructor stub
 		// Recover Graphics2D
 		Graphics2D g2 = (Graphics2D) g;
-		// Construct a rectangle and draw it
+		
 
 		BufferedImage immagine = null;
 		String projectPath = System.getProperty("user.dir");
 		try {
-			immagine = ImageIO.read(new File(projectPath + "\\src\\board\\images.jpg"));
+			immagine = ImageIO.read(new File(projectPath + "\\src\\board\\download.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 
 		}
-		/*
-		 * BufferedImage sfondoBox = null; try { sfondoBox =
-		 * ImageIO.read(new File(projectPath + "\\src\\board\\road.jpg")); }
-		 * catch (IOException e) { // TODO Auto-generated catch block
-		 * 
-		 * }
-		 */
-		// final JLabel label = new JLabel("Label");
-		// label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
-		// g2.draw(label);
-
-		// g2.drawImage(sfondoBox, 0 ,
-		// 0,(dimension.width),(dimension.height), null);
+		
 		g2.drawImage(immagine, 0, 0, (dimension.width), (dimension.height), null);
 
-		// g2.drawImage(sfondoBox, 50*pos.getX() , 50*pos.getY(),50,50,
-		// null);
-
-		// g2.drawImage(immagine, 50*pos.getX() , 50*pos.getY(),50,50,
-		// null);
 	}
 }

@@ -1,30 +1,53 @@
 package positionable;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.Serializable;
 
-import javax.imageio.ImageIO;
-import javax.swing.JComponent;
 import board.Position;
-import graphics.WallComponent;
 
-public class Wall extends Positionable {
+/**
+ * Element of the board that can't be moved
+ * @author Mattia Rosselli
+ *
+ */
+public class Wall extends Positionable implements Serializable {
 
+
+
+	/**
+	 * Creates a new Wall with a position
+	 * @param pos Position
+	 */
 	public Wall(Position pos) {
 		super.setPosition(pos);
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	@Override
+	public Wall clone() {
+		try {
+
+			Wall cloned = (Wall) super.clone();
+			cloned.setPosition(this.getPosition().clone());
+			return cloned;
+
+		} catch (CloneNotSupportedException e) {
+			return null;
+		}
+	}
 
 	@Override
-	public WallComponent getComponent(Dimension dF, Dimension dA) {
-		WallComponent tempComp = new WallComponent(super.getPosition(), dF, dA);
-		return tempComp;
+	public boolean equals(Object otherObject) {
+		if (otherObject == null)
+			return false;
+		if (otherObject.getClass()!=getClass() )
+			return false;
+		Wall other = (Wall) otherObject;
+		return getPosition().equals(other.getPosition());
+	}
+
+	@Override
+	public String toString() {
+		return getClass().getName() + "[position=" + getPosition() + "]";
 	}
 
 }

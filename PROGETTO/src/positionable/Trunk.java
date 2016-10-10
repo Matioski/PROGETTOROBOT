@@ -1,30 +1,52 @@
 package positionable;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.Serializable;
 
-import javax.imageio.ImageIO;
-import javax.swing.JComponent;
 import board.Position;
-import graphics.TrunkComponent;
 
-public class Trunk extends Positionable {
+/**
+ * Class that represents a trunk that can be opened to choose an item to equip
+ * @author Mattia Rosselli
+ *
+ */
+public class Trunk extends Positionable implements Cloneable, Serializable {
 
+	/**
+	 * Creates a new trunk with a position
+	 * @param pos Position
+	 */
 	public Trunk(Position pos) {
 		super.setPosition(pos);
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public Trunk clone() {
+		try {
 
+			Trunk cloned = (Trunk) super.clone();
+			cloned.setPosition(this.getPosition().clone());
+			return cloned;
+
+		} catch (CloneNotSupportedException e) {
+			return null;
+		}
+	}
 
 	@Override
-	public TrunkComponent getComponent(Dimension dF, Dimension dA) {
-		TrunkComponent tempComp = new TrunkComponent(super.getPosition(), dF, dA);
-		return tempComp;
+	public boolean equals(Object otherObject) {
+		if (otherObject == null)
+			return false;
+		if (otherObject.getClass()!=getClass() )
+			return false;
+		Trunk other = (Trunk) otherObject;
+		return getPosition().equals(other.getPosition());
 	}
+
+	@Override
+	public String toString() {
+		return getClass().getName() + "[position=" + getPosition() + "]";
+	}
+
 
 }

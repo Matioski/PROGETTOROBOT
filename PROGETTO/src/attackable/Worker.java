@@ -1,54 +1,104 @@
 package attackable;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.Serializable;
 
-import javax.imageio.ImageIO;
-import javax.swing.JComponent;
-
-import board.Position;
-import graphics.WorkerComponent;
-import item.AttackWeapon;
-import item.ChargingItem;
-import item.DefenseWeapon;
+import item.DefenseItem;
+import item.DefenseItemCollection;
 import item.Item;
 import item.RepairingItem;
-import item.Weapon;
+import item.RepairingItemCollection;
+import positionable.Box;
 
-
-public class Worker extends Robot<Item> {
-	private  ChargingItem chargingItem;
+/**
+ * 
+ * Public Robot class that can repair and handle Item.
+ *
+ * @author Mattia Rosselli
+ *
+ */
+public class Worker extends Robot<Item> implements Cloneable, Serializable {
+	private DefenseItem defenseItem;
 	private RepairingItem repairingItem;
-	public Worker(String name,String team,double strength){
-		super( name, team, strength);
-		chargingItem=null;
-		repairingItem=null;
+
+	/**
+	 * Worker of Builder creates a robot with default parameters and a Name
+	 * assigned through the explicit parameter.
+	 *
+	 * @param Name
+	 *            Name to be assigned to the Worker.
+	 */
+	public Worker(String name) {
+		super(name);
+		defenseItem = new DefenseItemCollection().getItem(0);
+		repairingItem = new RepairingItemCollection().getItem(0);
+		;
+		super.setDefense(0);
 	}
+
+	@Override
+	public Worker clone() {
+		try {
+			Worker cloned = (Worker) super.clone();
+
+			if (defenseItem != null)
+				cloned.defenseItem = defenseItem.clone();
+			if (repairingItem != null)
+				cloned.repairingItem = repairingItem.clone();
+			if (super.getPosition() != null)
+				cloned.setPosition(this.getPosition());
+			if (super.getTeam() != null)
+				cloned.setTeam(getTeam());
+
+			return cloned;
+		} catch (CloneNotSupportedException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public boolean equals(Object otherObject) {
+		if (otherObject == null)
+			return false;
+		if (otherObject.getClass()!=getClass() )
+			return false;
+		Worker other = (Worker) otherObject;
+		return getName().equals(other.getName()) &&
+
+		((getPosition() == null && other.getPosition() == null) || getPosition().equals(other.getPosition()))
+				&& getHealth() == other.getHealth() && getStrength() == other.getStrength()
+				&& getEnergy() == other.getEnergy()
+				&& ((getTeam() == null && other.getTeam() == null) || getTeam().equals(other.getTeam()))
+				&& ((defenseItem == null && other.defenseItem == null) || defenseItem.equals(other.defenseItem))
+				&& ((repairingItem == null && other.repairingItem == null)
+						|| repairingItem.equals(other.repairingItem));
+	}
+
+	/**
+	 * Returns the value of the repair Repairing Item equipped.
+	 * 
+	 * @return Repair value
+	 */
+	public double getReapairingRate() {
+		return repairingItem.getRepairingRate();
+	}
+
+	@Override
 	public void pick(Item item) {
-   	    if(item.getClass().getName().contains("ChargingItem")) chargingItem=(ChargingItem)item;
-   	    else if(item.getClass().getName().contains("RepairingItem")) repairingItem=(RepairingItem)item;
-   	                        }
-	@Override
-	public void drop(Item item) {
-		// TODO Auto-generated method stub
-		
+		if (item.getClass().getName().contains("DefenseItem")) {
+			defenseItem = (DefenseItem) item;
+			defenseItem.setOwner(this);
+			super.setDefense(defenseItem.getDefense());
+		} else if (item.getClass().getName().contains("RepairingItem"))
+			repairingItem = (RepairingItem) item;
+			repairingItem.setOwner(this);
 	}
-	public void charge(){
 
-	}
-	public void repair(){
-
-	}
-	
-               
 	@Override
-	public WorkerComponent getComponent(Dimension dF,Dimension dA){
-		WorkerComponent tempComp  = new WorkerComponent(super.getPosition(),super.getHealth(),dF,dA);
-		return tempComp;
+	public String toString() {
+		return getClass().getName() + "[name=" + this.getName() + "," + "team=" + this.getTeam() + "," + "position="
+				+ this.getPosition() + "," + "health=" + this.getHealth() + ",stength=" + this.getStrength()
+				+ ",energy=" + this.getEnergy() + ",defenseItem=" + this.defenseItem + ",repairingItem="
+				+ this.repairingItem + "]";
 	}
+
 }
